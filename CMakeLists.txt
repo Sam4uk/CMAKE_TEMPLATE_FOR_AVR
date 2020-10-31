@@ -19,25 +19,29 @@
 #                                                      #
 ########################################################
 cmake_minimum_required(VERSION 3.10)
+project("template")
+
 
 # customization of project
+# programmer
 set(CMAKE_PROGRAMMER "USBtiny")
-set(CMAKE_MICROCHIP "atmega48p")
 set(CMAKE_PORT "usb")
+#device
+set(CMAKE_MICROCHIP "atmega48p")
 set(FREQUENCY "1200000") # Hz
+# toolchaine
+set(CMAKE_C_COMPILER "avr-gcc")
+set(CMAKE_CXX_COMPILER "avr-g++")
+set(CMAKE_OBJCOPY "avr-objcopy")
+set(CMAKE_AVRDUDE "avrdude")
 # custom fuses  
 set(CMAKE_E_FUSE "0xFF")
 set(CMAKE_H_FUSE "0xDF")
 set(CMAKE_L_FUSE "0x62")
 
-set(CMAKE_C_COMPILER "avr-gcc")
 set(CMAKE_C_STANDARD "11")
-set(CMAKE_CXX_COMPILER "avr-g++")
 set(CMAKE_CXX_STANDARD "14")
-set(CMAKE_OBJCOPY "avr-objcopy")
-set(CMAKE_AVRDUDE "avrdude")
 
-project("template")
 
 add_compile_options(
   "-Os"

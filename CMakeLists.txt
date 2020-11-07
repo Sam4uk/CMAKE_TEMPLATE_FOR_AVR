@@ -26,9 +26,9 @@ set(CMAKE_MICROCHIP "atmega48p")
 set(CMAKE_PORT "usb")
 set(FREQUENCY "1200000") # Hz
 # custom fuses  
-set(CMAKE_E_FUSE "0xFF")
-set(CMAKE_H_FUSE "0xDF")
-set(CMAKE_L_FUSE "0x62")
+set(CMAKE_E_FUSE "0xFF") #default FF
+set(CMAKE_H_FUSE "0xD9") #default D9
+set(CMAKE_L_FUSE "0xE1") #default E1
 
 set(CMAKE_C_COMPILER "avr-gcc")
 set(CMAKE_C_STANDARD "11")
@@ -56,3 +56,8 @@ add_custom_target(download
         COMMAND ${CMAKE_OBJCOPY} -O ihex ${PROJECT_NAME} ${PROJECT_NAME}.hex
         COMMAND ${CMAKE_AVRDUDE} -p ${CMAKE_MICROCHIP} -c ${CMAKE_PROGRAMMER} -P${CMAKE_PORT} -Uflash:w:./${PROJECT_NAME}.hex:i
         )
+add_custom_target(BURN_FUSE
+        COMMAND ${CMAKE_AVRDUDE} -p ${CMAKE_MICROCHIP} -c ${CMAKE_PROGRAMMER} -P${CMAKE_PORT} -Ulfuse:w:${CMAKE_L_FUSE}:m
+        COMMAND ${CMAKE_AVRDUDE} -p ${CMAKE_MICROCHIP} -c ${CMAKE_PROGRAMMER} -P${CMAKE_PORT} -Uhfuse:w:${CMAKE_H_FUSE}:m
+        COMMAND ${CMAKE_AVRDUDE} -p ${CMAKE_MICROCHIP} -c ${CMAKE_PROGRAMMER} -P${CMAKE_PORT} -Uefuse:w:${CMAKE_E_FUSE}:m
+)

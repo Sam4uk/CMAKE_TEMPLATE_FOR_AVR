@@ -2,17 +2,17 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#define LED_BIT _BV(PB5)
+#define LED_BIT _BV(PD0)
 
 int main()
 {
-	DDRB |= LED_BIT; // OUTPUT
+	DDRD |= LED_BIT; // OUTPUT
 
 	while (1)
 	{
-		PORTB |= LED_BIT; // HIGH
+		PORTD |= LED_BIT; // HIGH
 		_delay_ms(1000);
-		PORTB &= ~LED_BIT; // LOW
+		PORTD &= ~LED_BIT; // LOW
 		_delay_ms(1000);
 	}
 }

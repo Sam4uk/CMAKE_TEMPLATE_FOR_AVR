@@ -24,10 +24,10 @@ project("template")
 
 # customization of project
 # programmer
-set(CMAKE_PROGRAMMER "USBtiny")
+set(CMAKE_PROGRAMMER "USBasp")
 set(CMAKE_PORT "usb")
 #device
-set(CMAKE_MICROCHIP "atmega48p")
+set(CMAKE_MICROCHIP "atmega8")
 set(FREQUENCY "1200000") # Hz
 # toolchaine
 set(CMAKE_C_COMPILER "avr-gcc")

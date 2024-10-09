@@ -25,13 +25,14 @@ HOW USE
 mkdir build
 cmake ..
 cmake --build .
-cmake --build . -- download
+cmake --build . -- upload
 ```
 or
 ```sh
 mkdir build
+cd build
 cmake ..
 make
-make download
+make upload
 ```
 
